@@ -31,6 +31,9 @@ gem 'devise'
 # Authorization
 gem 'cancan'
 
+# Bootstrap Framework
+gem 'anjlab-bootstrap-rails', '~> 2.2'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
