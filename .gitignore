@@ -30,3 +30,5 @@ pickle-email-*.html
 /log/*.log
 /tmp
 
+# Ignore Aptana Projectfile
+.project
