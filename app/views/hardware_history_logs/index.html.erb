@@ -1,0 +1,23 @@
+<h1>Listing hardware_history_logs</h1>
+
+<table>
+  <tr>
+    <th>Entry</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hardware_history_logs.each do |hardware_history_log| %>
+  <tr>
+    <td><%= hardware_history_log.entry %></td>
+    <td><%= link_to 'Show', hardware_history_log %></td>
+    <td><%= link_to 'Edit', edit_hardware_history_log_path(hardware_history_log) %></td>
+    <td><%= link_to 'Destroy', hardware_history_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hardware history log', new_hardware_history_log_path %>

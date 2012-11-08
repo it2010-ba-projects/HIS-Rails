@@ -1,0 +1,23 @@
+<h1>Listing user_histories</h1>
+
+<table>
+  <tr>
+    <th>Entry</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user_histories.each do |user_history| %>
+  <tr>
+    <td><%= user_history.entry %></td>
+    <td><%= link_to 'Show', user_history %></td>
+    <td><%= link_to 'Edit', edit_user_history_path(user_history) %></td>
+    <td><%= link_to 'Destroy', user_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User history', new_user_history_path %>

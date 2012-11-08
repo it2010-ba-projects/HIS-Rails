@@ -1,0 +1,21 @@
+<%= form_for(@hardware_history_log) do |f| %>
+  <% if @hardware_history_log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hardware_history_log.errors.count, "error") %> prohibited this hardware_history_log from being saved:</h2>
+
+      <ul>
+      <% @hardware_history_log.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :entry %><br />
+    <%= f.text_area :entry %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
