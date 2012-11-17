@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121107112050) do
+ActiveRecord::Schema.define(:version => 20121117172246) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -128,5 +128,23 @@ ActiveRecord::Schema.define(:version => 20121107112050) do
   add_index "users", ["created_from_id"], :name => "index_users_on_created_from_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  add_foreign_key "categories", "categories", :name => "categories_parent_id_fk", :column => "parent_id", :dependent => :restrict
+
+  add_foreign_key "categories_hardware_parts", "categories", :name => "categories_hardware_parts_category_id_fk", :dependent => :restrict
+  add_foreign_key "categories_hardware_parts", "hardware_parts", :name => "categories_hardware_parts_hardware_part_id_fk", :dependent => :restrict
+
+  add_foreign_key "groups_users", "groups", :name => "groups_users_group_id_fk", :dependent => :restrict
+  add_foreign_key "groups_users", "users", :name => "groups_users_user_id_fk", :dependent => :restrict
+
+  add_foreign_key "hardware_history_logs", "hardware_parts", :name => "hardware_history_logs_hardware_part_id_fk", :dependent => :restrict
+
+  add_foreign_key "hardware_parts", "hardware_parts", :name => "hardware_parts_parent_id_fk", :column => "parent_id", :dependent => :restrict
+  add_foreign_key "hardware_parts", "manufacturers", :name => "hardware_parts_manufacturer_id_fk", :dependent => :restrict
+  add_foreign_key "hardware_parts", "owners", :name => "hardware_parts_owner_id_fk", :dependent => :restrict
+  add_foreign_key "hardware_parts", "places", :name => "hardware_parts_place_id_fk", :dependent => :restrict
+  add_foreign_key "hardware_parts", "states", :name => "hardware_parts_state_id_fk", :dependent => :restrict
+
+  add_foreign_key "user_histories", "users", :name => "user_histories_user_id_fk", :dependent => :restrict
 
 end

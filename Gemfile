@@ -40,6 +40,14 @@ gem 'cancan'
 # Bootstrap Framework
 gem 'anjlab-bootstrap-rails', '~> 2.2'
 
+# Foreign-Keys support
+gem 'foreigner'
+
+# Foreign-Keys generation
+group :development, :test do
+  gem 'immigrant'
+end
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
