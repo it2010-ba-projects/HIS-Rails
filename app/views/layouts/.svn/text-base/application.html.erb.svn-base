@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
   <title>
-  	<%= (content_for?(:title) ? "Hardware Inventory System - #{yield(:title)}" : "Hardware Inventory System")%>
+  	<%= (content_for?(:title) ? "Tourmingo Installer - #{yield(:title)}" : "Tourmingo Installer")%>
   </title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

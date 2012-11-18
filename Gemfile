@@ -8,6 +8,16 @@ gem 'rails', '3.2.8'
 # gem 'sqlite3'
 gem 'pg'
 
+group :development do
+  gem 'pry-rails'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -18,12 +28,9 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-end
 
-group :test do
-  gem 'rspec'
-  gem 'capybara'
-  gem 'factory_girl_rails'
+  # Bootstrap Framework
+  gem 'anjlab-bootstrap-rails', '~> 2.2', :require => 'bootstrap-rails'
 end
 
 gem 'jquery-rails'
@@ -37,8 +44,8 @@ gem 'devise'
 # Authorization
 gem 'cancan'
 
-# Bootstrap Framework
-gem 'anjlab-bootstrap-rails', '~> 2.2'
+# HTML Parsing
+gem 'nokogiri'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
@@ -48,6 +55,7 @@ gem 'anjlab-bootstrap-rails', '~> 2.2'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'debugger'

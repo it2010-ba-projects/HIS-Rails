@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Inventory number:</b>
+  <%= @hardware_part.inventory_number %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @hardware_part.name %>
+</p>
+
+<p>
+  <b>Pruchase date:</b>
+  <%= @hardware_part.pruchase_date %>
+</p>
+
+<p>
+  <b>Warranty end:</b>
+  <%= @hardware_part.warranty_end %>
+</p>
+
+<p>
+  <b>Place:</b>
+  <%= @hardware_part.place_id %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @hardware_part.owner_id %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @hardware_part.state_id %>
+</p>
+
+<p>
+  <b>Manufacturer:</b>
+  <%= @hardware_part.manufacturer_id %>
+</p>
+
+<p>
+  <b>Hardware:</b>
+  <%= @hardware_part.hardware_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_hardware_part_path(@hardware_part) %> |
+<%= link_to 'Back', hardware_parts_path %>

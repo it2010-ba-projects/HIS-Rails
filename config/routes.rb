@@ -8,6 +8,9 @@ HISRails::Application.routes.draw do
   resources :groups
 
   resources :categories
+  
+  get 'setup' => 'setup#index'
+  post 'setup' => 'setup#create'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
