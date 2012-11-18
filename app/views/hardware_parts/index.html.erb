@@ -16,7 +16,7 @@
     <th></th>
   </tr>
 
-<% @hardwares.each do |hardware| %>
+<% @hardware_parts.each do |hardware| %>
   <tr>
     <td><%= hardware.inventory_number %></td>
     <td><%= hardware.name %></td>
@@ -28,7 +28,7 @@
     <td><%= hardware.manufacturer_id %></td>
     <td><%= hardware.hardware_id %></td>
     <td><%= link_to 'Show', hardware %></td>
-    <td><%= link_to 'Edit', edit_hardware_path(hardware) %></td>
+    <td><%= link_to 'Edit', edit_hardware_part_path(hardware) %></td>
     <td><%= link_to 'Destroy', hardware, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
@@ -36,4 +36,4 @@
 
 <br />
 
-<%= link_to 'New Hardware', new_hardware_path %>
+<%= link_to 'New Hardware', new_hardware_part_path %>

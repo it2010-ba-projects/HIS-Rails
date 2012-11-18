@@ -3,3 +3,11 @@
 
 en:
   hello: "Hello world"
+  
+  errors:
+    messages:
+      url_format: "is not a valid url"
+      domain_error: "does not belong to domain"
+      missing_slot: "missing slot or deploypath. Wrong servertype?" 
+      wrong_key: "deploy file does not exist. Wrong key or forgot to update the Tourmingo deploys?"
+      not_readable: "deploy file is not readable" 

@@ -1,0 +1,32 @@
+<%= title "Neuer Administrator" %>
+
+<%= bootstrap_form_for(@user, :url => setup_path) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.control_group :login do %>
+  	<%= f.text_field :login, disabled: true %>
+  <% end -%>
+  
+  <%= f.control_group :first_name do %>
+  	<%= f.text_field :first_name %>
+  <% end -%>
+  
+  <%= f.control_group :last_name do %>
+  	<%= f.text_field :last_name %>
+  <% end -%>
+  
+  <%= f.control_group :email do %>
+  	<%= f.email_field :email %>
+  <% end -%>
+  
+  <%= f.control_group :password, label: "Neues Passwort" do %>
+    <%= f.password_field :password %>
+  <% end -%>
+
+  <%= f.control_group :password_confirmation, label: "Passwortbestätigung" do %>
+    <%= f.password_field :password_confirmation %>
+  <% end -%>
+
+  <div class="form-actions">
+    <%= f.submit "Setup abschließen" %>
+  </div>
+<% end %>

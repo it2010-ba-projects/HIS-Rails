@@ -1,0 +1,23 @@
+<%- page_title = "Einloggen" -%>
+<%= title page_title %>
+
+<%= bootstrap_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= f.control_group :login do %>
+    <%= f.text_field :login %>
+  <%- end %>
+  <%= f.control_group :password do %>
+    <%= f.password_field :password %>
+    <% if devise_mapping.rememberable? -%>
+      <%= f.label :remember_me, :class => "checkbox" do
+         "Angemeldet bleiben".html_safe <<
+         f.check_box(:remember_me)
+       end
+      %>
+    <% end -%>
+  <%- end %>    
+  <div class="form-actions">
+    <div> <%= f.submit page_title, icon: "user" %></div>
+  </div>
+<% end %>
+
+<%= render "links" %>
