@@ -10,3 +10,8 @@
 [:admin, :service, :einkauf, :verkauf].each do |group|
   Group.find_or_create_by_name group
 end
+
+# Status anlegen
+State::STATES.each do |state|
+  State.find_or_create_by_name state
+end

@@ -9,6 +9,10 @@ HISRails::Application.routes.draw do
 
   resources :categories
   
+  resources :places
+  
+  resources :owners
+  
   get 'setup' => 'setup#index'
   post 'setup' => 'setup#create'
 

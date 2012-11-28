@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20121117172246) do
   add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
 
   create_table "categories_hardware_parts", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "hardware_part_id"
+    t.integer "category_id",      :null => false
+    t.integer "hardware_part_id", :null => false
   end
 
   add_index "categories_hardware_parts", ["category_id"], :name => "index_categories_hardware_parts_on_category_id"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20121117172246) do
   end
 
   create_table "groups_users", :id => false, :force => true do |t|
-    t.integer "group_id"
-    t.integer "user_id"
+    t.integer "group_id", :null => false
+    t.integer "user_id",  :null => false
   end
 
   add_index "groups_users", ["group_id"], :name => "index_groups_users_on_group_id"
@@ -127,24 +127,39 @@ ActiveRecord::Schema.define(:version => 20121117172246) do
 
   add_index "users", ["created_from_id"], :name => "index_users_on_created_from_id"
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
+  add_foreign_key "categories", "categories", :name => "categories_parentCategory_fkey", :column => "parent_id", :dependent => :restrict
   add_foreign_key "categories", "categories", :name => "categories_parent_id_fk", :column => "parent_id", :dependent => :restrict
 
+  add_foreign_key "categories_hardware_parts", "categories", :name => "categories_category_id_fkey", :dependent => :restrict
   add_foreign_key "categories_hardware_parts", "categories", :name => "categories_hardware_parts_category_id_fk", :dependent => :restrict
   add_foreign_key "categories_hardware_parts", "hardware_parts", :name => "categories_hardware_parts_hardware_part_id_fk", :dependent => :restrict
+  add_foreign_key "categories_hardware_parts", "hardware_parts", :name => "hardware_parts_hardware_part_id_fkey"
 
+  add_foreign_key "groups_users", "groups", :name => "group_id_fkey"
   add_foreign_key "groups_users", "groups", :name => "groups_users_group_id_fk", :dependent => :restrict
   add_foreign_key "groups_users", "users", :name => "groups_users_user_id_fk", :dependent => :restrict
+  add_foreign_key "groups_users", "users", :name => "user_id_fkey"
 
   add_foreign_key "hardware_history_logs", "hardware_parts", :name => "hardware_history_logs_hardware_part_id_fk", :dependent => :restrict
+  add_foreign_key "hardware_history_logs", "hardware_parts", :name => "hardware_part_id_fkey", :dependent => :restrict
 
   add_foreign_key "hardware_parts", "hardware_parts", :name => "hardware_parts_parent_id_fk", :column => "parent_id", :dependent => :restrict
+  add_foreign_key "hardware_parts", "hardware_parts", :name => "parent_id_fkey", :column => "parent_id", :dependent => :restrict
   add_foreign_key "hardware_parts", "manufacturers", :name => "hardware_parts_manufacturer_id_fk", :dependent => :restrict
+  add_foreign_key "hardware_parts", "manufacturers", :name => "manufacturer_id_fkey", :dependent => :restrict
   add_foreign_key "hardware_parts", "owners", :name => "hardware_parts_owner_id_fk", :dependent => :restrict
+  add_foreign_key "hardware_parts", "owners", :name => "owner_id_fkey", :dependent => :restrict
   add_foreign_key "hardware_parts", "places", :name => "hardware_parts_place_id_fk", :dependent => :restrict
+  add_foreign_key "hardware_parts", "places", :name => "place_id_fkey", :dependent => :restrict
   add_foreign_key "hardware_parts", "states", :name => "hardware_parts_state_id_fk", :dependent => :restrict
+  add_foreign_key "hardware_parts", "states", :name => "state_id_fkey", :dependent => :restrict
 
   add_foreign_key "user_histories", "users", :name => "user_histories_user_id_fk", :dependent => :restrict
+  add_foreign_key "user_histories", "users", :name => "user_id_fkey", :dependent => :restrict
+
+  add_foreign_key "users", "users", :name => "created_from_id", :column => "created_from_id", :dependent => :restrict
 
 end
