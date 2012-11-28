@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Gruppen anlegen
-[:admin, :service, :einkauf, :verkauf].each do |group|
+Group::GROUPS.each do |group|
   Group.find_or_create_by_name group
 end
 

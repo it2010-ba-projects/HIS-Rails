@@ -11,4 +11,12 @@ class User < ActiveRecord::Base
   
   has_and_belongs_to_many :groups
   has_many                :user_histories
+  
+  def name
+    "#{last_name}, #{first_name}"
+  end
+  
+  def is? group
+    groups.map{ |g| g.name.to_sym }.include? group.to_sym
+  end
 end

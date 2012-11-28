@@ -60,6 +60,7 @@ HISRails::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'webmaster@project1.ba-leipzig.de'}
+  config.action_mailer.default_url_options = { :host => 'project1.ba-leipzig.de' }
 
   # Enable threaded mode
   # config.threadsafe!

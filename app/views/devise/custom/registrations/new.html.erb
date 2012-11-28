@@ -25,12 +25,6 @@
   <%= f.control_group :password_confirmation, label: "Passwortbestätigung" do %>
     <%= f.password_field :password_confirmation %>
   <% end -%>
-  
-  <%= f.control_group "user[group_ids][]", label: "Gruppenzugehörigkeit" do %>
-  	<% Group.all do |group| -%>
-  		<%= check_box_tag "#{resource_name}[group_ids][]", group.id, resource_name.groups.include?(group) %>
-  	<% end -%>
-  <% end -%>
 
   <div class="form-actions">
     <%= f.submit "Nutzer anlegen" %>
