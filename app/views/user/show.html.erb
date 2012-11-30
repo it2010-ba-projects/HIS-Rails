@@ -1,0 +1,21 @@
+<%= title "Detailansicht Nutzer"%>
+<p>
+  <b>Login</b>
+  <%= @user.login %>
+</p>
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+<p>
+  <b>E-Mail:</b>
+  <%= @user.email %>
+</p>
+<p>
+  <b></b>
+</p>
+
+
+<%= link_to 'Bearbeiten', edit_user_path(@user) %> |
+<%= link_to 'Zurück', user_index_path %>
+

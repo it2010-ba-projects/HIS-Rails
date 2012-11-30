@@ -5,11 +5,15 @@ module MenuHelper
     nav = ""
     nav_items = []
     if (user_signed_in?)
-      nav_items << { name: "Übersicht", url: root_path }
+      nav_items << { name: "Hardwareverwaltung", url: root_path }
+      nav_items << { name: "Standortverwaltung", url: places_path}
+      nav_items << { name: "Nutzerverwaltung", url: user_index_path } if can? :manage, User
+      nav_items << { name: "Passwort ändern", url: edit_user_path(current_user) }
       nav_items << { name: "Abmelden", url: destroy_user_session_path, method: :delete, divider: true }
     else
       nav_items << { name: "Anmelden", url: new_session_path(User)}
     end
+    
     nav_items.each do |item|
       
       if item[:divider].present?

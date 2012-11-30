@@ -1,18 +1,21 @@
-<%= bootstrap_form_for(@user, url: user_index_path) do |f| %>
-  <%= f.control_group :login do %>
-  	<%= f.text_field :login %>
-  <% end -%>
-  
-  <%= f.control_group :first_name do %>
-  	<%= f.text_field :first_name %>
-  <% end -%>
-  
-  <%= f.control_group :last_name do %>
-  	<%= f.text_field :last_name %>
-  <% end -%>
-  
-  <%= f.control_group :email do %>
-  	<%= f.email_field :email %>
+<% url = @user.new_record? ? user_index_path : user_path(@user)%>
+<%= bootstrap_form_for(@user, url: url) do |f| %>
+  <% if can? :manage, @user -%>
+    <%= f.control_group :login do %>
+    	<%= f.text_field :login %>
+    <% end -%>
+    
+    <%= f.control_group :first_name do %>
+    	<%= f.text_field :first_name %>
+    <% end -%>
+    
+    <%= f.control_group :last_name do %>
+    	<%= f.text_field :last_name %>
+    <% end -%>
+    
+    <%= f.control_group :email do %>
+    	<%= f.email_field :email %>
+    <% end -%>
   <% end -%>
   
   <%= f.control_group :password, label: "Neues Passwort" do %>
@@ -23,15 +26,17 @@
     <%= f.password_field :password_confirmation %>
   <% end -%>
   
-  <%= f.control_group "user[group_ids][]", label: "Gruppenzugehörigkeit" do %>
-  	<% Group.all.each do |group| -%>
-      <%= label_tag "user[group_ids][]", group.name, class: 'checkbox inline'%>
-  	  <%= check_box_tag "user[group_ids][]", group.id, @user.groups.include?(group) %>
-  	<% end -%>
+  <% if can? :manage, @user -%>
+    <%= f.control_group "user[group_ids][]", label: "Gruppenzugehörigkeit" do %>
+    	<% Group.all.each do |group| -%>
+        <%= label_tag "user[group_ids][]", group.name, class: 'checkbox inline'%>
+    	  <%= check_box_tag "user[group_ids][]", group.id, @user.groups.include?(group) %>
+    	<% end -%>
+    <% end -%>
   <% end -%>
 
   <div class="form-actions">
-    <%= f.submit "Nutzer anlegen" %>
+    <%= f.submit %>
   </div>
 <% end %>
 

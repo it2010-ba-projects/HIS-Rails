@@ -1,4 +1,6 @@
 class HardwarePartsController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /hardware_parts
   # GET /hardware_parts.json
   def index

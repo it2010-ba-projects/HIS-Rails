@@ -1,16 +1,16 @@
-<h1>Listing hardwares</h1>
+<h1>Hardwareübersicht</h1>
 
-<table>
+<table class="table">
   <tr>
-    <th>Inventory number</th>
+    <th>Inventarnummer</th>
     <th>Name</th>
-    <th>Pruchase date</th>
-    <th>Warranty end</th>
-    <th>Place</th>
-    <th>Owner</th>
-    <th>State</th>
-    <th>Manufacturer</th>
-    <th>Hardware</th>
+    <th>Kaufdatum</th>
+    <th>Garantieende</th>
+    <th>Ort</th>
+    <th>Besitzer</th>
+    <th>Hersteller</th>
+    <th>Übergeordnete Komponente</th>
+    <th>Status</th>
     <th></th>
     <th></th>
     <th></th>
@@ -22,11 +22,11 @@
     <td><%= hardware.name %></td>
     <td><%= hardware.pruchase_date %></td>
     <td><%= hardware.warranty_end %></td>
-    <td><%= hardware.place_id %></td>
-    <td><%= hardware.owner_id %></td>
-    <td><%= hardware.state_id %></td>
-    <td><%= hardware.manufacturer_id %></td>
-    <td><%= hardware.hardware_id %></td>
+    <td><%= hardware.place.name %></td>
+    <td><%= hardware.owner.name %></td>
+    <td><%= hardware.manufacturer.name %></td>
+    <td><%= hardware.parent.name if hardware.parent %></td>
+    <td><%= hardware.state.name.humanize %></td>
     <td><%= link_to 'Show', hardware %></td>
     <td><%= link_to 'Edit', edit_hardware_part_path(hardware) %></td>
     <td><%= link_to 'Destroy', hardware, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -36,4 +36,4 @@
 
 <br />
 
-<%= link_to 'New Hardware', new_hardware_part_path %>
+<%= create_link new_hardware_part_path, HardwarePart %>

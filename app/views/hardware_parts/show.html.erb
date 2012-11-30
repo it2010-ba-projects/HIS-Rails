@@ -11,8 +11,8 @@
 </p>
 
 <p>
-  <b>Pruchase date:</b>
-  <%= @hardware_part.pruchase_date %>
+  <b>Purchase date:</b>
+  <%= @hardware_part.purchase_date %>
 </p>
 
 <p>
@@ -22,27 +22,27 @@
 
 <p>
   <b>Place:</b>
-  <%= @hardware_part.place_id %>
+  <%= @hardware_part.place.name if @hardware_part.place%>
 </p>
 
 <p>
   <b>Owner:</b>
-  <%= @hardware_part.owner_id %>
+  <%= @hardware_part.owner.name if @hardware_part.owner %>
 </p>
 
 <p>
   <b>State:</b>
-  <%= @hardware_part.state_id %>
+  <%= @hardware_part.state.name.humanize %>
 </p>
 
 <p>
   <b>Manufacturer:</b>
-  <%= @hardware_part.manufacturer_id %>
+  <%= @hardware_part.manufacturer.name if @hardware_part.manufacturer %>
 </p>
 
 <p>
-  <b>Hardware:</b>
-  <%= @hardware_part.hardware_id %>
+  <b>Übergeordnete Komponente:</b>
+  <%= link_to @hardware_part.parent.name, hardware_part_path(@hardware_part.parent) if @hardware_part.parent %>
 </p>
 
 

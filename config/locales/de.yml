@@ -230,6 +230,12 @@ de:
       user:
         one: "Nutzer"
         other: "%{count} Nutzer"
+      hardware_part:
+        one: "Hardware"
+        other: "%{count} Komponenten"
+      place:
+        one: "Ort"
+        other: "%{count} Orte"
     attributes:
       user:
         email: "E-Mail"

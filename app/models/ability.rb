@@ -7,8 +7,18 @@ class Ability
     user ||= User.new # guest user (not logged in)
     if user.is? :admin
       can :manage, :all
-    else
+    elsif user.is? :service
+      can :manage, Place
+      can :update, HardwarePart
+    elsif user.is? :einkauf
+      can :manage, [Category, HardwarePart, Owner, Manufacturer]
+    elsif user.is? :verkauf
+      can :update, HardwarePart
+    end
+    
+    unless user.new_record?
       can :read, :all
+      can :update, User, :id => user.id
     end
     #
     # The first argument to `can` is the action you are giving the user permission to do.

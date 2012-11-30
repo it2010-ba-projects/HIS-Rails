@@ -3,7 +3,7 @@ class CreateHardwareParts < ActiveRecord::Migration
     create_table :hardware_parts do |t|
       t.string :inventory_number
       t.string :name
-      t.date :pruchase_date
+      t.date :purchase_date
       t.date :warranty_end
       t.references :place
       t.references :owner

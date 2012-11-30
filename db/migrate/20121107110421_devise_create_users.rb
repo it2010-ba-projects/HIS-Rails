@@ -37,7 +37,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # General user attributes
       t.string      :first_name
       t.string      :last_name
-      t.boolean     :deleted
+      t.boolean     :deleted, :default => false
       t.references  :created_from
 
 
